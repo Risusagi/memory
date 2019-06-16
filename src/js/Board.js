@@ -31,38 +31,43 @@ class Board {
 
     openAvers() {
         let choisenCards = [];
-        document.querySelectorAll('.card')
-            .forEach((el, index) => el.addEventListener('click',
-                (e) => {
-                    
-                    if (choisenCards.length < 2) {
-                        e.currentTarget.innerHTML = this.cards[index].avers;
-                        
-                        choisenCards.push(this.cards[index]);
-                        
-                        if (choisenCards.length > 1) {
-                            if (choisenCards[0].avers === choisenCards[1].avers) {
-                                console.log('the same');
-                            } else {
-                                const myCards = this.cards.filter(el => {
-                                    return el === choisenCards[0] || el === choisenCards[1]
-                                })
-                                setTimeout( () => {
-                                    for (let card of myCards) {
-                                        document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
-                                    }
-                                }, 800)
+        const handleCardClick = (e, index) => {
+            console.log('clicked');
+            if (choisenCards.length < 2) {
+                e.currentTarget.innerHTML = this.cards[index].avers;
+
+                choisenCards.push(this.cards[index]);
+
+                if (choisenCards.length > 1) {
+                    const myCards = this.cards.filter(el => {
+                        return el === choisenCards[0] || el === choisenCards[1]
+                    });
+                    if (choisenCards[0].avers === choisenCards[1].avers) {
+                        for (let card of choisenCards) {
+                            setTimeout(() => {
                                 
-                                
-                            }
-                            choisenCards = [];
+                                document.querySelector(`.card-${card.index}`).innerHTML = '';
+                            }, 800)
                         }
-                    
+                    } else {
+
+                        setTimeout(() => {
+                            for (let card of myCards) {
+                                document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
+                            }
+                        }, 800)
+
+
                     }
-                    
-                        
+                    choisenCards = [];
                 }
-            ))
+
+            }
+
+
+        }
+        document.querySelectorAll('.card')
+            .forEach((el, index) => el.addEventListener('click', (e) => handleCardClick(e, index) ))
     }
     render() {
         
