@@ -33,7 +33,7 @@ class Board {
             let index = Math.floor(Math.random() * averses.length);
             let elToChange = averses[index];
             averses[index] = el;
-            return averses[ind] = elToChange;
+            averses[ind] = elToChange;
 
         });
         return averses;
@@ -48,45 +48,41 @@ class Board {
         }
     }
 
-    
-    
-    openAvers() {
-        const handleCardClick = (e, index) => {
-            if (!e.currentTarget.classList.contains('done')) {
-                
-                if (this.choisenCards.length < 2) {
-                    e.currentTarget.innerHTML = this.cards[index].avers;
-                    this.choisenCards.push(this.cards[index]);
+    handleCardClick(e, index) {
+        if (!e.currentTarget.classList.contains('done')) {
 
-                    if (this.choisenCards.length > 1) {
-                        
-                        const myCards = this.cards.filter(el => {
-                            return el === this.choisenCards[0] || el === this.choisenCards[1]
-                        });
-                        console.log(this.choisenCards);
-                        console.log(myCards);
-                        if (this.choisenCards[0].avers === this.choisenCards[1].avers) {
-                            for (let card of this.choisenCards) {
-                                setTimeout(() => {
-                                    const needCard = document.querySelector(`.card-${card.index}`);
-                                    needCard.classList.add('done');
-                                    needCard.innerHTML = '';
-                                }, 600)
-                            }
-                        } else {
+            if (this.choisenCards.length < 2) {
+                const clickedCard = this.cards[index];
+                e.currentTarget.innerHTML = clickedCard.avers;
+                this.choisenCards.push(clickedCard);
+
+                if (this.choisenCards.length === 2) {
+                    //if cards are equal add class 'done' and clear their div's content
+                    if (this.choisenCards[0].avers === this.choisenCards[1].avers) {
+                        for (let card of this.choisenCards) {
+                            const needCard = document.querySelector(`.card-${card.index}`);
                             setTimeout(() => {
-                                for (let card of myCards) {
-                                    document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
-                                }
-                            }, 600)
+                                needCard.classList.add('done');
+                                needCard.innerHTML = '';
+                            }, 600);
+                            this.choisenCards = [];
                         }
-                        this.choisenCards = [];
+                    } else {
+                        setTimeout(() => {
+                            for (let card of this.choisenCards) {
+                                document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
+                            }
+                            this.choisenCards = [];
+                        }, 600)
                     }
                 }
             }
         }
+    }
+    
+    openAvers() {
         document.querySelectorAll('.card')
-            .forEach( (el, index) => el.addEventListener('click', (e) => handleCardClick(e, index)) );
+            .forEach( (el, index) => el.addEventListener('click', (e) => this.handleCardClick(e, index)) );
     }
 
     startNewGame() {

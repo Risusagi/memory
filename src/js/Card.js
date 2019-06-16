@@ -4,16 +4,6 @@ class Card {
         this.index = index;
         this.avers = avers;
     }
-    openAvers(i) {
-        
-        document.querySelectorAll('.card')[i].addEventListener('click', (e) => {
-                e.currentTarget.innerHTML = 15;
-                console.log(this)
-                
-        })
-        
-            
-    }
     
     render(i) {
         return `

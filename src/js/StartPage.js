@@ -1,6 +1,6 @@
 import Board from "./Board";
 
-const board = new Board(0);
+const board = new Board();
 
 
 class StartPage {
@@ -9,22 +9,13 @@ class StartPage {
     }
     //renders board with cards
     handleClick() {
-        board.render();
+       this.levelChoisen ? board.render() : alert('Please select your level');
     }
     //finds how many cards do we want to render depending on level; allows to click start
     getQuantity(e) {
-        const quantity = e.currentTarget.classList.contains('easy') ? 12 : e.currentTarget.classList.contains('medium') ? 24 : 36;
+        const quantity = e.currentTarget.innerText === 'Easy' ? 12 : e.currentTarget.innerText === 'Medium' ? 24 : 36;
         board.cardsQuantity = quantity;
         this.levelChoisen = this.levelChoisen ? this.levelChoisen : !this.levelChoisen;
-        document.querySelector('.start-btn').addEventListener('click', () => {
-            this.handleClick(); 
-        }
-        );
-    }
-    showAlert() {
-        if (!this.levelChoisen) {
-            alert('Please select your level');
-        }
     }
     render() {
         document.querySelector('#root').innerHTML = `
@@ -43,9 +34,7 @@ class StartPage {
         `;
         
         document.querySelectorAll('.level-btn').forEach(btn => btn.addEventListener('click', (e) => this.getQuantity(e)));
-        document.querySelector('.start-btn').addEventListener('click', () => {
-            this.showAlert();
-        });
+        document.querySelector('.start-btn').addEventListener('click', () => this.handleClick());
     }
 };
 export default StartPage;
