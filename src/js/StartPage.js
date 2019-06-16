@@ -9,7 +9,7 @@ class StartPage {
     }
     //renders board with cards
     handleClick() {
-       this.levelChoisen ? board.render() : alert('Please select your level');
+       this.levelChoisen ? board.render() : alert('Please select one of the levels');
     }
     //finds how many cards do we want to render depending on level; allows to click start
     getQuantity(e) {

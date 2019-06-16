@@ -1,6 +1,8 @@
 import Card from './Card';
 import StartPage from './StartPage';
+import Player from './Player';
 
+const player = new Player();
 
 class Board {
     constructor() {
@@ -49,8 +51,8 @@ class Board {
     }
 
     handleCardClick(e, index) {
-        if (!e.currentTarget.classList.contains('done')) {
-
+        if (!e.currentTarget.classList.contains('done') && !e.currentTarget.classList.contains('clicked')) {
+            e.currentTarget.classList.add('clicked');
             if (this.choisenCards.length < 2) {
                 const clickedCard = this.cards[index];
                 e.currentTarget.innerHTML = clickedCard.avers;
@@ -64,16 +66,24 @@ class Board {
                             setTimeout(() => {
                                 needCard.classList.add('done');
                                 needCard.innerHTML = '';
-                            }, 600);
+                            }, 700);
                             this.choisenCards = [];
+                            
                         }
+                        player.pairs += 1;
+                        player.renderPairs();
+                        console.log(player);
                     } else {
                         setTimeout(() => {
                             for (let card of this.choisenCards) {
-                                document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
+                                const choisenCard = document.querySelector(`.card-${card.index}`);
+                                choisenCard.innerHTML = card.revers;
+                                choisenCard.classList.remove('clicked');
                             }
                             this.choisenCards = [];
-                        }, 600)
+                            player.moves += 1;
+                            player.renderMoves();
+                        }, 700)
                     }
                 }
             }
@@ -82,19 +92,26 @@ class Board {
     
     openAvers() {
         document.querySelectorAll('.card')
-            .forEach( (el, index) => el.addEventListener('click', (e) => this.handleCardClick(e, index)) );
+            .forEach(
+                (el, index) => el.addEventListener('click', (e) => this.handleCardClick(e, index))
+            );
     }
 
     startNewGame() {
         document.querySelector('.restart-btn').addEventListener('click', () => {
             const startPage = new StartPage();
             startPage.render();
+            //clear player's statistics
+            player.pairs = 0;
+            player.moves = 0;
+            player.render();
         });
     }
 
     render() {
         document.querySelector('#root').innerHTML = `
             <div class="board">
+                ${player.render(this.cardsQuantity)}
                <button class="restart-btn">Restart</button>
             </div>
         `;
