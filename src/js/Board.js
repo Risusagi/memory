@@ -11,28 +11,58 @@ class Board {
         for (let i = 0; i < this.cardsQuantity; i++) {
             let number = Math.ceil((i + 1) / 2);
             averses.push(`<img src="../../public/img/cats-${number}.jpg">`);
-            
-        //    document.querySelector('.board').innerHTML += card.render(i + 1);
         }
-         
-        
         averses.map((el, ind) => {
             let index = Math.floor(Math.random() * averses.length);
             let elToChange = averses[index];
             averses[index] = el;
-            averses[ind] = elToChange;
+            return averses[ind] = elToChange;
             
-        })
-        
-        for (let avers of averses) {
-            let card = new Card();
-            card.avers = avers;
-            document.querySelector('.board').innerHTML += card.render();
+        });
+        const cards = [];
+        for (let i = 0; i < averses.length; i++) {
+            let card = new Card(i);
+            card.avers = averses[i];
+            cards.push(card);
+            document.querySelector('.board').innerHTML += card.render(i);
         }
-        // for (let i = 0; i < averses.length; i++) {
-        //     card.openAvers(i);
-        // }
+        this.cards = cards;
+    }
 
+    openAvers() {
+        let choisenCards = [];
+        document.querySelectorAll('.card')
+            .forEach((el, index) => el.addEventListener('click',
+                (e) => {
+                    
+                    if (choisenCards.length < 2) {
+                        e.currentTarget.innerHTML = this.cards[index].avers;
+                        
+                        choisenCards.push(this.cards[index]);
+                        
+                        if (choisenCards.length > 1) {
+                            if (choisenCards[0].avers === choisenCards[1].avers) {
+                                console.log('the same');
+                            } else {
+                                const myCards = this.cards.filter(el => {
+                                    return el === choisenCards[0] || el === choisenCards[1]
+                                })
+                                setTimeout( () => {
+                                    for (let card of myCards) {
+                                        document.querySelector(`.card-${card.index}`).innerHTML = card.revers;
+                                    }
+                                }, 800)
+                                
+                                
+                            }
+                            choisenCards = [];
+                        }
+                    
+                    }
+                    
+                        
+                }
+            ))
     }
     render() {
         
@@ -43,7 +73,7 @@ class Board {
             </div>
         `;
         this.renderCards();
-        
+        this.openAvers();
     }
 };
 export default Board;

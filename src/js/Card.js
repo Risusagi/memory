@@ -1,6 +1,7 @@
 class Card {
-    constructor() {
-        this.revers = `<img src="../../public/img/playing-card.jpg">`
+    constructor(index) {
+        this.revers = `<img src="../../public/img/playing-card.jpg">`;
+        this.index = index;
     }
     openAvers(i) {
         
@@ -12,17 +13,15 @@ class Card {
         
             
     }
-    lu() {
-        console.log(255666)
-    }
-    render() {
+    
+    render(i) {
         const cardDiv = `
-            <div class="card">
+            <div class="card card-${i}">
                 ${this.revers}
                
             </div>
         `;
-       
+        
         return cardDiv;
     }
 };
