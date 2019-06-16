@@ -52,8 +52,8 @@ class Board {
 
     handleCardClick(e, index) {
         if (!e.currentTarget.classList.contains('done') && !e.currentTarget.classList.contains('clicked')) {
-            e.currentTarget.classList.add('clicked');
             if (this.choisenCards.length < 2) {
+                e.currentTarget.classList.add('clicked');
                 const clickedCard = this.cards[index];
                 e.currentTarget.innerHTML = clickedCard.avers;
                 this.choisenCards.push(clickedCard);
