@@ -15,7 +15,7 @@ class Player {
     }
     
     checkIfWin(maxPoints, boardObj) {
-        if (this.pairs === 1) {
+        if (this.pairs === maxPoints) {
             setTimeout(() => {
                  document.querySelector('.board').innerHTML = `
                     Congratulations! You won!!!
@@ -37,8 +37,7 @@ class Player {
         const tik = setInterval(() => {
             if (!this.shouldTik) {
                 clearInterval(tik);
-                console.log('not tik')
-                return;
+                // return;
             }
             this.time += 93;
             this.minutes = Math.floor(this.time / 60);
