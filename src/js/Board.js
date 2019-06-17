@@ -1,15 +1,16 @@
 import Card from './Card';
 import StartPage from './StartPage';
 import Player from './Player';
-
-const player = new Player();
+import { runInThisContext } from 'vm';
 
 class Board {
     constructor() {
         this.cardsQuantity = null;
         this.cards = [];
         this.choisenCards = [];
+        this.player = new Player();
     }
+    
     createAverses() {
         let averses = [];
         //to not use only first 12, 24 or 36 pictures
@@ -70,9 +71,10 @@ class Board {
                             this.choisenCards = [];
                             
                         }
-                        player.pairs += 1;
-                        player.renderPairs();
-                        console.log(player);
+                        this.player.pairs += 1;
+                        this.player.renderPairs();
+                        this.player.checkIfWin(this.cardsQuantity / 2, this);
+                        console.log(this.player);
                     } else {
                         setTimeout(() => {
                             for (let card of this.choisenCards) {
@@ -81,8 +83,8 @@ class Board {
                                 choisenCard.classList.remove('clicked');
                             }
                             this.choisenCards = [];
-                            player.moves += 1;
-                            player.renderMoves();
+                            this.player.moves += 1;
+                            this.player.renderMoves();
                         }, 700)
                     }
                 }
@@ -97,27 +99,27 @@ class Board {
             );
     }
 
-    startNewGame() {
+    restartGame() {
         document.querySelector('.restart-btn').addEventListener('click', () => {
             const startPage = new StartPage();
             startPage.render();
             //clear player's statistics
-            player.pairs = 0;
-            player.moves = 0;
-            player.render();
+            this.player.shouldTik = false;
+            this.player.timeTik();
         });
     }
-
+    
     render() {
         document.querySelector('#root').innerHTML = `
             <div class="board">
-                ${player.render(this.cardsQuantity)}
+                ${this.player.render(this.cardsQuantity)}
                <button class="restart-btn">Restart</button>
             </div>
         `;
         this.renderCards();
         this.openAvers();
-        this.startNewGame();
+        this.player.timeTik();
+        this.restartGame();
     }
 };
 export default Board;
