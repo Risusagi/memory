@@ -1,7 +1,6 @@
 import Card from './Card';
 import StartPage from './StartPage';
 import Player from './Player';
-import { runInThisContext } from 'vm';
 
 class Board {
     constructor() {
@@ -30,7 +29,7 @@ class Board {
         // creates averses and mixes them
         for (let i = 0; i < this.cardsQuantity; i++) {
             let number = Math.ceil((i + 1) / 2) * factor;
-            averses.push(`<img src="../../public/img/cats-${number}.jpg">`);
+            averses.push(`<img class="avers" src="../../public/img/cats-${number}.jpg">`);
         }
         averses.map((el, ind) => {
             let index = Math.floor(Math.random() * averses.length);
@@ -43,11 +42,11 @@ class Board {
     }
     renderCards() {
         const averses = this.createAverses();
-        const boardDiv = document.querySelector('.board');
+        const cardsDiv = document.querySelector('.cards');
         for (let i = 0; i < averses.length; i++) {
             let card = new Card(i, averses[i]);
             this.cards.push(card);
-            boardDiv.innerHTML += card.render(i);
+            cardsDiv.innerHTML += card.render(i);
         }
     }
 
@@ -112,8 +111,13 @@ class Board {
     render() {
         document.querySelector('#root').innerHTML = `
             <div class="board">
+                <h1>Memory game</h1>
                 ${this.player.render(this.cardsQuantity)}
-               <button class="restart-btn">Restart</button>
+                <div class="playing-btns">
+                    <button type="button" class="btn btn-outline-info pause-btn">Pause</button>
+                    <button type="button" class="btn btn-outline-info restart-btn">Restart</button>
+               </div>
+               <div class="cards"></div>
             </div>
         `;
         this.renderCards();

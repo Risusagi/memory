@@ -18,18 +18,30 @@ class StartPage {
     }
     render() {
         document.querySelector('#root').innerHTML = `
-            <button class="level-btn easy">
-                Easy
-            </button>
-            <button class="level-btn medium">
-                Medium
-            </button>
-            <button class="level-btn hard">
-                Hard
-            </button>
-            <button class="start-btn">
-                Start
-            </button>
+            <div class="start-page">
+                <h1>Memory game</h1>
+                
+                <span>Same... but so different</span>
+                <img src="../../public/img/logo-img.png">
+                <p>Please select level of hardness</p>
+                <div class="btns">
+                    <button type="button" class="btn btn-outline-success level-btn easy">
+                        Easy
+                    </button>
+                    
+                    
+                    <button type="button" class="btn btn-outline-warning level-btn medium">
+                        Medium
+                    </button>
+                    <button type="button" class="btn btn-outline-danger level-btn hard">
+                        Hard
+                    </button>
+                </div>
+                
+                <button type="button" class="btn btn-outline-info btn-lg start-btn">
+                    Start
+                </button>
+            </div>    
         `;
         
         document.querySelectorAll('.level-btn').forEach(btn => btn.addEventListener('click', (e) => this.getQuantity(e)));

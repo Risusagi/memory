@@ -39,7 +39,7 @@ class Player {
                 clearInterval(tik);
                 // return;
             }
-            this.time += 93;
+            this.time += 1;
             this.minutes = Math.floor(this.time / 60);
             this.seconds = this.time % 60;
             document.querySelector('.timer').textContent = this.timeToShow();
@@ -49,12 +49,11 @@ class Player {
     render(cardsQuantity) {
         return `
             <div class="player-div">
-                <span>
+                <span class="statistics">
                     Points:
                     <span class="pairs">${this.pairs}</span>
                      / ${cardsQuantity / 2}
-                </span>
-                <span>
+                    <br>
                     Moves:
                     <span class="moves">${this.moves}</span>
                 </span>
