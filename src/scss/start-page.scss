@@ -1,0 +1,106 @@
+.start-page {
+    width: 100vw;
+    padding: 3vh 3vw 0 3vw;
+    text-align: center;
+    :not(h1) {
+        letter-spacing: 1px;
+    }
+    span, p {
+        text-shadow: 
+            1px 1px 2px black,
+            -1px 1px 2px black;
+    }
+    span {
+        color: rgb(234, 208, 255);
+    }
+    p {
+        font-size: 1.1rem;
+    }
+    
+    img {
+        display: block;
+        width: 67%;
+        height: 67%;
+        margin: 30px auto;
+        margin-bottom: 20px;
+    }
+    button {
+        font-size: 1.2rem;
+        letter-spacing: 1px;
+    }
+    .btns {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button {
+            margin-bottom: 10px;
+            width: 80%;
+        }
+    }
+    .start-btn {
+        display: block;
+        width: 95%;
+        margin: 10px auto;
+    }
+}
+@media (min-width: 401px) {
+    .start-page {
+        padding-top: 1vh;
+    }
+    
+}
+@media (min-width: 457px) {
+    .start-page {
+        img {
+            width: 60%;
+            height: 60%;
+        }
+        .btns {
+            margin-top: 20px;
+            flex-direction: row;
+            justify-content: space-around;
+            button {
+                width: 28%;
+                height: 52px;
+                &:focus {
+                    background-color: rgba(255, 255, 255, 0.151);
+                }
+            }
+        }
+        .start-btn  {
+            width: 48%;
+            height: 60px;
+        }
+        
+    }
+}
+@media (min-width: 582px) {
+     .start-page {
+         padding-left: 7vw;
+         padding-right: 7vw;
+         img {
+             width: 65%;
+             height: 65%;
+             max-width: 302px;
+             max-height: 302px;
+         }
+         .btns button {
+             width: 31%;
+
+         }
+     }
+}
+@media (min-width: 808px) {
+    .start-page {
+        img {
+            width: 30vw;
+            height: 30vw;
+        }
+    }
+}
+@media (min-width: 1025px) {
+    .start-page {
+        padding-left: 13vw;
+        padding-right: 13vw;
+    }
+}

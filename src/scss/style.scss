@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=Mitr:500&display=swap');
+
+@import './start-page.scss';
+@import './board.scss';
+@import './player.scss';
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    color: rgb(246, 245, 255);
+    font-family: 'Mitr', sans-serif;
+    font-size: 16px;
+}
+#root {
+    background-image: linear-gradient(135deg, rgb(95, 0, 63) 30%, rgb(0, 0, 0));
+    font-size: 16px;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    font-size: 2.15rem;
+    text-align: center;
+    text-shadow:
+        3px 1px 1px black,
+        -1px 1px 1px black;
+        
+}
+
+
+@media (min-width: 190px) {
+    #root {
+        font-size: 20px;
+    }
+    h1 {
+        font-size: 2.6rem;
+    }
+}
+@media (min-width: 457px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
+@media (min-width: 808px) {
+    h1 {
+        font-size: 3.2rem;
+    }
+}
+@media (min-width: 1025px) {
+    * {
+        font-size: 18px;
+    }
+}
