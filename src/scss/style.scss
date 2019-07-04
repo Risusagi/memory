@@ -3,6 +3,7 @@
 @import './start-page.scss';
 @import './board.scss';
 @import './player.scss';
+@import './final-board.scss';
 
 * {
     padding: 0;
@@ -30,6 +31,54 @@ h1 {
         
 }
 
+// BUTTONS
+.btn {
+    background-color: rgba(255, 255, 255, 0.016);
+    box-shadow:
+        1px 1px 1px rgba(0, 0, 0, 0.76),
+        -1px 1px 1px rgba(0, 0, 0, 0.76);
+}
+.btn-outline-info {
+    $manage-btn-color: rgb(97, 87, 185);
+    color: $manage-btn-color;
+    border-color: $manage-btn-color;
+    &:hover {
+        background-color: $manage-btn-color;
+        border-color: $manage-btn-color;
+    }
+    &:focus {
+        box-shadow: red;
+    }
+}
+// rgb(192, 0, 106)
+.easy {
+    $easy-btn-color: rgb(80, 165, 0);
+    color: $easy-btn-color;
+    border-color: $easy-btn-color;
+    &:hover {
+        background-color: $easy-btn-color;
+        border-color: $easy-btn-color;
+    }
+}
+.medium {
+    $medium-btn-color: rgb(226, 109, 0);
+    color: $medium-btn-color;
+    border-color: $medium-btn-color;
+    &:hover {
+        background-color: $medium-btn-color;
+        border-color: $medium-btn-color;
+    }
+}
+.hard {
+    $hard-btn-color: rgb(212, 0, 46);
+    color: $hard-btn-color;
+    border-color: $hard-btn-color;
+    &:hover {
+        background-color: $hard-btn-color;
+        border-color: $hard-btn-color;
+    }
+}
+// BUTTONS-END
 
 @media (min-width: 190px) {
     #root {
