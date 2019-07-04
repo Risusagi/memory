@@ -73,7 +73,6 @@ class Board {
                         this.player.pairs += 1;
                         this.player.renderPairs();
                         this.player.checkIfWin(this.cardsQuantity / 2, this);
-                        console.log(this.player);
                     } else {
                         setTimeout(() => {
                             for (let card of this.choisenCards) {
@@ -96,6 +95,7 @@ class Board {
             .forEach(
                 (el, index) => el.addEventListener('click', (e) => this.handleCardClick(e, index))
             );
+            
     }
 
     restartGame() {
@@ -107,7 +107,14 @@ class Board {
             this.player.timeTik();
         });
     }
-    
+
+    manageTime(e) {
+        e.currentTarget.innerHTML = this.player.shouldTik ? `Play` : `Pause`;
+        this.player.shouldTik = !this.player.shouldTik;
+        //continue time counting
+        this.player.timeTik();
+    }
+
     render() {
         document.querySelector('#root').innerHTML = `
             <div class="board">
@@ -124,6 +131,7 @@ class Board {
         this.openAvers();
         this.player.timeTik();
         this.restartGame();
+        document.querySelector('.pause-btn').addEventListener('click', (e) => this.manageTime(e));
     }
 };
 export default Board;

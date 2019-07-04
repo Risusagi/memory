@@ -1,3 +1,4 @@
+import FinalBoard from './FinalBoard';
 class Player {
     constructor() {
         this.pairs = 0;
@@ -17,14 +18,8 @@ class Player {
     checkIfWin(maxPoints, boardObj) {
         if (this.pairs === maxPoints) {
             setTimeout(() => {
-                 document.querySelector('.board').innerHTML = `
-                    Congratulations! You won!!!
-                    Time: ${this.timeToShow()}
-                    Moves: ${this.moves}
-                    <button class="restart-btn">
-                        New game
-                    </button>
-                `;
+                const finalBoard = new FinalBoard(this.timeToShow(), this.moves);
+                finalBoard.render();
                 boardObj.restartGame();
             }, 800);
             this.shouldTik = false;
@@ -37,15 +32,17 @@ class Player {
         const tik = setInterval(() => {
             if (!this.shouldTik) {
                 clearInterval(tik);
-                // return;
+                return;
             }
             this.time += 1;
             this.minutes = Math.floor(this.time / 60);
             this.seconds = this.time % 60;
             document.querySelector('.timer').textContent = this.timeToShow();
         }, 1000);
-        
     }
+
+    
+
     render(cardsQuantity) {
         return `
             <div class="player-div">
@@ -58,7 +55,7 @@ class Player {
                     <span class="moves">${this.moves}</span>
                 </span>
                 <span class="timer">
-                    00:00
+                    00 : 00
                 </span>    
             </div>
         `;

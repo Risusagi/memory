@@ -25,15 +25,15 @@ class StartPage {
                 <img src="../../public/img/logo-img.png">
                 <p>Please select level of hardness</p>
                 <div class="btns">
-                    <button type="button" class="btn btn-outline-success level-btn easy">
+                    <button type="button" class="btn btn-outline-info level-btn easy">
                         Easy
                     </button>
                     
                     
-                    <button type="button" class="btn btn-outline-warning level-btn medium">
+                    <button type="button" class="btn btn-outline-info level-btn medium">
                         Medium
                     </button>
-                    <button type="button" class="btn btn-outline-danger level-btn hard">
+                    <button type="button" class="btn btn-outline-info level-btn hard">
                         Hard
                     </button>
                 </div>
