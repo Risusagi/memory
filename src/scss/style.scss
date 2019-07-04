@@ -39,20 +39,17 @@ h1 {
         -1px 1px 1px rgba(0, 0, 0, 0.76);
 }
 .btn-outline-info {
-    $manage-btn-color: rgb(97, 87, 185);
+    $manage-btn-color: rgb(146, 139, 201);
     color: $manage-btn-color;
     border-color: $manage-btn-color;
     &:hover {
         background-color: $manage-btn-color;
         border-color: $manage-btn-color;
     }
-    &:focus {
-        box-shadow: red;
-    }
 }
-// rgb(192, 0, 106)
+
 .easy {
-    $easy-btn-color: rgb(80, 165, 0);
+    $easy-btn-color: rgb(117, 163, 73);
     color: $easy-btn-color;
     border-color: $easy-btn-color;
     &:hover {
@@ -61,7 +58,7 @@ h1 {
     }
 }
 .medium {
-    $medium-btn-color: rgb(226, 109, 0);
+    $medium-btn-color: rgb(218, 136, 60);
     color: $medium-btn-color;
     border-color: $medium-btn-color;
     &:hover {
@@ -70,7 +67,7 @@ h1 {
     }
 }
 .hard {
-    $hard-btn-color: rgb(212, 0, 46);
+    $hard-btn-color: rgb(216, 76, 106);
     color: $hard-btn-color;
     border-color: $hard-btn-color;
     &:hover {
