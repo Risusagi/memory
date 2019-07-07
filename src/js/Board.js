@@ -29,7 +29,7 @@ class Board {
         // creates averses and mixes them
         for (let i = 0; i < this.cardsQuantity; i++) {
             let number = Math.ceil((i + 1) / 2) * factor;
-            averses.push(`<img class="avers" src="../../public/img/cats-${number}.jpg">`);
+            averses.push(`<img class="avers" src="../img/cats-${number}.jpg">`);
         }
         averses.map((el, ind) => {
             let index = Math.floor(Math.random() * averses.length);
@@ -49,7 +49,7 @@ class Board {
             cardsDiv.innerHTML += card.render(i);
         }
     }
-
+    
     handleCardClick(e, index) {
         if (!e.currentTarget.classList.contains('done') && !e.currentTarget.classList.contains('clicked')) {
             if (this.choisenCards.length < 2) {
