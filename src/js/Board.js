@@ -29,7 +29,7 @@ class Board {
         // creates averses and mixes them
         for (let i = 0; i < this.cardsQuantity; i++) {
             let number = Math.ceil((i + 1) / 2) * factor;
-            averses.push(`<img class="avers" src="../img/cats-${number}.jpg">`);
+            averses.push(`<img class="avers" src="img/cats-${number}.jpg">`);
         }
         averses.map((el, ind) => {
             let index = Math.floor(Math.random() * averses.length);
@@ -111,6 +111,7 @@ class Board {
     manageTime(e) {
         e.currentTarget.innerHTML = this.player.shouldTik ? `Play` : `Pause`;
         this.player.shouldTik = !this.player.shouldTik;
+        document.querySelector('.cards').style.display = !this.player.shouldTik ? 'none' : '';
         //continue time counting
         this.player.timeTik();
     }

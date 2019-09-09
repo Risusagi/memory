@@ -44,8 +44,8 @@ module.exports = {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'img/',
-                        publicPath: './img',
-                        useRelativePaths: true
+                        // publicPath: './img',
+                        // useRelativePaths: true
                     },
                 }, ],
             },

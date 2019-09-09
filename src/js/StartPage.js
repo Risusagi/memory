@@ -22,7 +22,7 @@ class StartPage {
                 <h1>Memory game</h1>
                 
                 <span>Same... but so different</span>
-                <img src="../img/logo-img.png">
+                <img src="img/logo-img.png">
                 <p>Please select level of hardness</p>
                 <div class="btns">
                     <button type="button" class="btn btn-outline-info level-btn easy">

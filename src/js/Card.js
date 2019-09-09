@@ -1,6 +1,6 @@
 class Card {
     constructor(index, avers) {
-        this.revers = `<img src="../img/revers.png">`;
+        this.revers = `<img src="img/revers.png">`;
         this.index = index;
         this.avers = avers;
     }
