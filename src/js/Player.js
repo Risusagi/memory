@@ -8,11 +8,14 @@ class Player {
         this.seconds = 0;
         this.shouldTik = false;
     }
-    renderPairs() {
-        document.querySelector('.pairs').textContent = this.pairs;
+    renderPoints() {
+        const progress = document.querySelector('progress');
+        const val = Number(progress.getAttribute('value'));
+        console.log(val);
+        progress.setAttribute('value', `${val + 1}`);
     }
     renderMoves() {
-        document.querySelector('.moves').textContent = this.moves;
+        document.querySelector('.moves').textContent = `${this.moves}`;
     }
     
     checkIfWin(maxPoints, boardObj) {
@@ -42,21 +45,30 @@ class Player {
     }
 
     
-
     render(cardsQuantity) {
         return `
-            <div class="player-div">
-                <span class="statistics">
-                    Points:
-                    <span class="pairs">${this.pairs}</span>
-                     / ${cardsQuantity / 2}
-                    <br>
-                    Moves:
-                    <span class="moves">${this.moves}</span>
-                </span>
-                <span class="timer">
-                    00 : 00
-                </span>    
+            <div class="player-container">
+                <div class="statistics">
+                    <div class="points">
+                        <img src="img/logo-img.png" style="height: 35px">
+                        <progress value="0" max="${cardsQuantity / 2}"></progress>
+                    </div>
+                    <div class="timer-container">
+                        <img src="img/clock.png" style="height: 25px">
+                        <span class="timer">
+                            00 : 00
+                        </span>
+                    </div>
+                    <div class="moves-container">
+                        <img src="img/moves-icon.png" style="height: 25px">
+                        <span class="moves">${this.moves}</span>
+                    </div>
+                </div>
+                <div class="playing-btns">
+                    <button type="button" class="btn btn-outline-info pause-btn">Pause</button>
+                    <button type="button" class="btn btn-outline-info restart-btn">Restart</button>
+               </div>
+               
             </div>
         `;
         

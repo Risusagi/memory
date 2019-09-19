@@ -59,6 +59,8 @@ class Board {
                 this.choisenCards.push(clickedCard);
 
                 if (this.choisenCards.length === 2) {
+                    this.player.moves ++;
+                    this.player.renderMoves();
                     //if cards are equal add class 'done' and clear their div's content
                     if (this.choisenCards[0].avers === this.choisenCards[1].avers) {
                         for (let card of this.choisenCards) {
@@ -68,10 +70,9 @@ class Board {
                                 needCard.innerHTML = '';
                             }, 700);
                             this.choisenCards = [];
-                            
                         }
                         this.player.pairs += 1;
-                        this.player.renderPairs();
+                        this.player.renderPoints();
                         this.player.checkIfWin(this.cardsQuantity / 2, this);
                     } else {
                         setTimeout(() => {
@@ -81,8 +82,6 @@ class Board {
                                 choisenCard.classList.remove('clicked');
                             }
                             this.choisenCards = [];
-                            this.player.moves += 1;
-                            this.player.renderMoves();
                         }, 700)
                     }
                 }
@@ -116,15 +115,26 @@ class Board {
         this.player.timeTik();
     }
 
+    manageHardnessClass() {
+        switch (this.cardsQuantity) {
+            case 24:
+                document.querySelector('.cards').classList.add('medium-level');
+                break;
+            case 36:
+                document.querySelector('.cards').classList.add('hard-level');
+                break;
+        }
+    }
+
     render() {
         document.querySelector('#root').innerHTML = `
+            
             <div class="board">
-                <h1>Memory game</h1>
+                <!--<div class="logo">
+                    <img src="img/logo-img.png" alt="logo">
+                    <p>Cats memory</p>
+                </div>  -->     
                 ${this.player.render(this.cardsQuantity)}
-                <div class="playing-btns">
-                    <button type="button" class="btn btn-outline-info pause-btn">Pause</button>
-                    <button type="button" class="btn btn-outline-info restart-btn">Restart</button>
-               </div>
                <div class="cards"></div>
             </div>
         `;
@@ -133,6 +143,7 @@ class Board {
         this.player.timeTik();
         this.restartGame();
         document.querySelector('.pause-btn').addEventListener('click', (e) => this.manageTime(e));
+        this.manageHardnessClass();
     }
 };
 export default Board;

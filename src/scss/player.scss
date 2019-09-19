@@ -1,9 +1,66 @@
-.player-div {
+.player-container {
     text-align: center;
-    .statistics {
+    width: 90vw;
+    margin: 0 auto;
+    padding-top: 15px;
+    position: relative;
+}
+.statistics {
+    margin: 0 auto;
+    font-size: 20px;
+    div {
+        padding-bottom: 8px;
+    }
+}
+progress {
+    max-width: 80vw;
+}
+.moves-container {
+    img {
+        transform: rotate(20deg);
+    }
+}
+
+.playing-btns {
+    width: 100%;
+    margin: 10px auto 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    button {
+        width: 90%;
+        margin-bottom: 5px;
+    }
+}
+
+@media (min-width: 306px) {
+    .playing-btns {
+        width: 50%;
+        justify-content: space-between;
+        button {
+            width: 44%;
+            max-width: 196px;
+        }
+    }
+}
+@media (min-width: 504px) {
+    .statistics div {
         display: inline-block;
-        width: 100%;
-        
-        margin-bottom: 10px;
+        width: calc(90vw / 3);
+        vertical-align: middle;
+        &:not(:first-child) {
+            margin-left: -8px;
+        }
+    }
+}
+
+@media (min-width: 609px) {
+    .player-container {
+        width: 80vw;
+    }
+    .statistics div {
+        width: calc(80vw / 3);
+        max-width: calc((1450px * .8) / 3);
     }
 }

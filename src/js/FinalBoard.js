@@ -9,9 +9,6 @@ class FinalBoard {
                 <span class="congratulations">
                     Congratulations!
                 </span>
-                <span class="you-won">
-                    You won!!!
-                </span>
                 <span class="final-statistics">
                     Time: ${this.time}
                     <br>
