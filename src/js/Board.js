@@ -128,12 +128,7 @@ class Board {
 
     render() {
         document.querySelector('#root').innerHTML = `
-            
             <div class="board">
-                <!--<div class="logo">
-                    <img src="img/logo-img.png" alt="logo">
-                    <p>Cats memory</p>
-                </div>  -->     
                 ${this.player.render(this.cardsQuantity)}
                <div class="cards"></div>
             </div>

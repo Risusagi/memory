@@ -7,29 +7,30 @@ class StartPage {
     }
     //renders board with cards
     handleStartClick() {
-       this.levelChoisen ? this.boardToRender.render() : alert('Please select one of the levels');
-       this.boardToRender.player.shouldTik = true;
+        if(!this.levelChoisen) return;
+
+        this.boardToRender.render();
+        this.boardToRender.player.shouldTik = true;
     }
     //finds how many cards do we want to render depending on level; allows to click start
     getQuantity(e) {
         const quantity = e.currentTarget.innerText === 'Easy' ? 12 : e.currentTarget.innerText === 'Medium' ? 24 : 36;
         this.boardToRender.cardsQuantity = quantity;
-        this.levelChoisen = this.levelChoisen ? this.levelChoisen : !this.levelChoisen;
+        this.levelChoisen = true;
+        document.querySelector('.start-btn').innerText = 'Start';
     }
     render() {
         document.querySelector('#root').innerHTML = `
             <div class="start-page">
-                <h1>Memory game</h1>
+                <h1>Playful cats</h1>
                 
                 <span>Same... but so different</span>
                 <img src="img/logo-img.png">
-                <p>Please select level of hardness</p>
+
                 <div class="btns">
                     <button type="button" class="btn btn-outline-info level-btn easy">
                         Easy
                     </button>
-                    
-                    
                     <button type="button" class="btn btn-outline-info level-btn medium">
                         Medium
                     </button>
@@ -39,7 +40,7 @@ class StartPage {
                 </div>
                 
                 <button type="button" class="btn btn-outline-info btn-lg start-btn">
-                    Start
+                    Select level please
                 </button>
             </div>    
         `;
