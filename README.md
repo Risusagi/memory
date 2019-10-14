@@ -30,7 +30,7 @@ A player can also control his/her progress because Memory counts how many pairs 
 
 ## Features
 To-do list:
-* Rebuild columns of cards.
+* Add some more complications.
 
 ## Status
 Project is _in progress_.
