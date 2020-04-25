@@ -23,7 +23,7 @@ A player can also control his/her progress because Memory counts how many pairs 
 
 ## Technologies
 * Javascript
-* Sass
+* SASS
 * HTML
 * Webpack 4
 * Bootstrap 4
@@ -33,4 +33,4 @@ To-do list:
 * Add some more complications.
 
 ## Status
-Project is _in progress_.
+Project is _finished_ at this moment.
